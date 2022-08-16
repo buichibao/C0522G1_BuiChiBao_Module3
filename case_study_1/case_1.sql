@@ -16,6 +16,7 @@ ten_bo_phan varchar(45));
 
 create table nhan_vien (
 ma_nhan_vien int primary key,
+is_deleted bit default 0,
 ho_ten varchar(45) not null,
 ngay_sinh date not null,
 so_cmnd varchar(45) not null,
@@ -37,6 +38,7 @@ ten_loai_khach varchar(45));
 
 create table khach_hang (
 ma_khach_hang int primary key,
+is_deleted bit default 0,
 ho_ten varchar(45) not null,
 ngay_sinh date not null,
 gioi_tinh varchar(1) not null,
@@ -51,6 +53,7 @@ foreign key(ma_loai_khach) references loai_khach(ma_loai_khach)
 create table kieu_thue(
 ma_kieu_thue int primary key,
 ten_kieu_thue varchar(45));
+
 create table loai_dich_vu(
 ma_loai_dich_vu int primary key,
 ten_loai_dich_vu varchar(45));
@@ -69,7 +72,7 @@ dich_vu_mien_phi_di_kem text,
 ma_kieu_thue int,
 ma_loai_dich_vu int,
 foreign key (ma_kieu_thue) references kieu_thue(ma_kieu_thue),
-foreign key (ma_loai_dich_vu) references dich_vu(ma_dich_vu)
+foreign key (ma_loai_dich_vu) references loai_dich_vu(ma_loai_dich_vu)
 );
 
 create table dich_vu_di_kem (
@@ -92,7 +95,6 @@ foreign key(ma_khach_hang) references khach_hang(ma_khach_hang),
 foreign key(ma_dich_vu) references dich_vu(ma_dich_vu));
 
 create table hop_dong_chi_tiet(
-
 ma_hop_dong_chi_tiet int primary key,
 so_luong int ,
 ma_hop_dong int,

@@ -37,9 +37,17 @@ foreign key (so_pn) references phieu_nhap(so_pn),
 foreign key (ma_vt) references vat_tu(ma_vt)
 );
 
+create table nha_cc(
+ma_cc int primary key,
+ten_ncc varchar(45),
+dia_chi varchar(45)
+);
+
 create table don_dh(
 so_dh int primary key,
-ngay_hd date
+ngay_hd date,
+ma_cc int,
+foreign key (ma_cc) references nha_cc(ma_cc)
 );
 
 create table dat_hang(
@@ -50,11 +58,7 @@ foreign key (so_dh) references don_dh(so_dh),
 foreign key (ma_vt) references vat_tu(ma_vt)
 );
 
-create table nha_cc(
-ma_cc int primary key,
-ten_ncc varchar(45),
-dia_chi varchar(45)
-);
+
 create table sdt(
 sdt varchar(45),
 ma_ncc int,
