@@ -36,6 +36,8 @@ select *
 from w_tinh_tien;
 
 
+
+
 -- task 6
 select dv.ma_dich_vu,dv.ten_dich_vu,dv.dien_tich,dv.chi_phi_thue ,ldv.ten_loai_dich_vu
 from dich_vu dv 
