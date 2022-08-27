@@ -9,19 +9,18 @@
 <html>
   <head>
     <title>$Title$</title>
+    <link href="bootstrap.min.css">
+    <link href="bootstrap.min">
   </head>
   <body>
   <form action="/discount" method="get">
-    Product Description:
+    <p>Product Description:</p>
     <input type="text" name="a">
-    <br>
-    List Price:
+    <p>List Price:</p>
     <input type="text" name="b">
-    <br>
-    Discount Percent:
+    <p>Discount Percent:</p>
     <input type="text" name="c">
-    <br>
-    <button type="submit">Submit</button>
+    <button type="submit" class="badge bg-info text-dark">Submit</button>
   </form>
   </body>
 </html>
