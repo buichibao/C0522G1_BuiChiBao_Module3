@@ -58,8 +58,31 @@ public class ProductServlet extends HttpServlet {
     }
 
     private void updateProduct(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        String productName = request.getParameter("productName");
+        double price = Double.parseDouble(request.getParameter("price"));
+        String description = request.getParameter("description");
+        String producer = request.getParameter("producer");
+        Product product = iProductService.findById(id);
+        RequestDispatcher requestDispatcher;
+        if(product == null) {
+           requestDispatcher = request.getRequestDispatcher("view/error.jsp");
+        }else {
+            product.setId(id);
+            product.setProductName(productName);
+            product.setPrice(price);
+            product.setDescription(description);
+            product.setProducer(producer);
+            request.setAttribute("product",product);
+            request.setAttribute("message","Cập nhật thành công");
+            requestDispatcher=request.getRequestDispatcher("view/edit.jsp");
+        }
+        try {
+            requestDispatcher.forward(request,response);
+        } catch (ServletException |IOException e) {
+            e.printStackTrace();
+        }
     }
-
     private void addNewProduct(HttpServletRequest request, HttpServletResponse response) {
         int id =Integer.parseInt(request.getParameter("id"));
         String productName = request.getParameter("productName");
